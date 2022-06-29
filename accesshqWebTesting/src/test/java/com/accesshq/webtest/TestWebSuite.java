@@ -1,17 +1,21 @@
 package com.accesshq.webtest;
 
-import com.accesshq.Planet.PlanetPage;
+import com.accesshq.model.PlanetPage;
 import com.accesshq.model.Form;
+import com.accesshq.strategies.DistanceMatchingStrategy;
+import com.accesshq.strategies.NameMatchingStrategy;
+import com.accesshq.strategies.RediusMatchingStrategy;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import java.text.ParseException;
 
 
 public class TestWebSuite {
@@ -63,18 +67,32 @@ public class TestWebSuite {
         driver.findElement(By.cssSelector("[aria-label=planets]")).click();
 
         var planetPage = new PlanetPage(driver);
-        planetPage.clickExplore("Earth");
+//        planetPage.clickExplore("Earth");
 
         Assertions.assertEquals("Exploring Earth",
                 planetPage.getPopupText());
     }
 
     @Test
-    public void Verify_FindByRadius() {
+    public void Verify_FindByRadius() throws ParseException {
         driver.findElement(By.cssSelector("[aria-label=planets]")).click();
 
         var planetPage = new PlanetPage(driver);
-        planetPage.getByRadius("58,232 km");
+        planetPage.getByRadius(58232.0);
+
+        Assertions.assertEquals("Exploring Saturn",
+                planetPage.getPopupText());
+    }
+
+    @Test
+    public void VerifyExploringSaturn() throws ParseException {
+        driver.findElement(By.cssSelector("[aria-label=planets]")).click();
+
+        var planetPage = new PlanetPage(driver);
+        planetPage.clickExplore(planet -> planet.getName().equalsIgnoreCase("Saturn"));
+//        planetPage.clickExplore(new RediusMatchingStrategy(58232));
+//        planetPage.clickExplore(new NameMatchingStrategy("Saturn"));
+//        planetPage.clickExplore(new DistanceMatchingStrategy(1434000000.0));
 
         Assertions.assertEquals("Exploring Saturn",
                 planetPage.getPopupText());
