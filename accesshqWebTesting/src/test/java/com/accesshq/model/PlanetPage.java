@@ -1,6 +1,7 @@
 package com.accesshq.model;
 
 import com.accesshq.strategies.MatchingStrategy;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -10,6 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.function.Predicate;
 
 public class PlanetPage {
 
@@ -45,6 +47,23 @@ public class PlanetPage {
             }
         }
     }
+
+//    public void clickExploreLambda(Planet planet) throws ParseException {
+//        if () {
+//            planet.clickExplore();
+//            waitForPopupMessage();
+//        }
+//    }
+
+//    public Planet getPlanet(Predicate<Planet> testLogic ) throws Exception {
+//        for (WebElement planetElement : driver.findElements(By.className("planet"))) {
+//            Planet planet = new Planet(planetElement);
+//            if (testLogic.test(planet)) {
+//                return planet;
+//            }
+//        }
+//        throw new Exception("The planet was not found");
+//    }
 
 
     public void getByRadius(Double radius) throws ParseException {

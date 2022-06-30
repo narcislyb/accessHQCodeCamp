@@ -1,5 +1,6 @@
 package com.accesshq.webtest;
 
+import com.accesshq.model.Planet;
 import com.accesshq.model.PlanetPage;
 import com.accesshq.model.Form;
 import com.accesshq.strategies.DistanceMatchingStrategy;
@@ -96,6 +97,29 @@ public class TestWebSuite {
 
         Assertions.assertEquals("Exploring Saturn",
                 planetPage.getPopupText());
+    }
+
+//    @Test
+//    public void VerifyExploring58232() throws ParseException {
+//        driver.findElement(By.cssSelector("[aria-label=planets]")).click();
+//
+//        var planetPage = new PlanetPage(driver);
+//
+//        planetPage.getPlanet(p -> {
+//            try {
+//                return p.getRadius() == 58232;
+//            } catch (ParseException e) {
+//                e.printStackTrace();
+//            }
+//        });
+////        planetPage.clickExploreLambda();
+////        planetPage.getPlanet(p -> p.getPlanet(p, p.getRadius == 58232));
+//    }
+
+    @Test
+    public void VerifyPriceCalculation() {
+        //find the element
+        driver.findElement(By.className("cart"));
     }
 
     @AfterEach
