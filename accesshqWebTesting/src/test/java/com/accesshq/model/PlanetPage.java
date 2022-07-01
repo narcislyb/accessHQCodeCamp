@@ -29,15 +29,6 @@ public class PlanetPage {
         return getPopupMessage().getText();
     }
 
-//    public void clickExplore(String planetName) {
-//        for (Planet planet : getPlanets()) {
-//            if (planet.getName().equalsIgnoreCase(planetName)) {
-//                planet.clickExplore();
-//                waitForPopupMessage();
-//                break;
-//            }
-//        }
-//    }
     public void clickExplore(MatchingStrategy strategy) throws ParseException {
         for (Planet planet : getPlanets()) {
             if (strategy.match(planet)) {

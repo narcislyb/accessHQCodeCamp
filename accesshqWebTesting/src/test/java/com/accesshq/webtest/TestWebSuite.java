@@ -1,5 +1,6 @@
 package com.accesshq.webtest;
 
+import com.accesshq.model.CartPage;
 import com.accesshq.model.Planet;
 import com.accesshq.model.PlanetPage;
 import com.accesshq.model.Form;
@@ -13,6 +14,7 @@ import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.remote.RemoteWebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -28,6 +30,8 @@ public class TestWebSuite {
         driver = new ChromeDriver();
         driver.manage().window().maximize();
         driver.get("https://d18u5zoaatmpxx.cloudfront.net/");
+
+//        var capability = new RemoteWebDriver();
     }
 
     @Test
@@ -120,6 +124,12 @@ public class TestWebSuite {
     public void VerifyPriceCalculation() {
         //find the element
         driver.findElement(By.className("cart"));
+
+        var cartPage = new CartPage(driver);
+
+
+        //testing
+
     }
 
     @AfterEach
